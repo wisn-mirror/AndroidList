@@ -10,6 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
+import android.support.v7.widget.helper.ItemTouchHelper;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -158,6 +159,24 @@ public class MainActivity extends AppCompatActivity {
 
         };
         mRecyclerView.setAdapter(mAdapter);
+       new ItemTouchHelper(new  ItemTouchHelper.Callback(){
+           @Override
+           public int getMovementFlags(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder) {
+               return 0;
+           }
+
+           @Override
+           public boolean onMove(RecyclerView recyclerView,
+                                 RecyclerView.ViewHolder viewHolder,
+                                 RecyclerView.ViewHolder target) {
+               return false;
+           }
+
+           @Override
+           public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction) {
+
+           }
+       });
     }
 
     class MyViewHolder1 extends RecyclerView.ViewHolder {
